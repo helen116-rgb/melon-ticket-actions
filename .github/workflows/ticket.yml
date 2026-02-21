@@ -1,0 +1,29 @@
+name: Melon Ticket Action
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/0.25 * * * *'
+
+jobs:
+  run-ticket:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run Ticket Script
+        run: npm start
+        env:
+          COOKIE: ${{ secrets.MELON_COOKIE }}
+          PRODUCT_ID: ${{ secrets.MELON_PRODUCT_ID }}
+          SCHEDULE_ID: ${{ secrets.MELON_SCHEDULE_ID }}
