@@ -26,5 +26,8 @@ jobs:
           INPUT_COOKIE: ${{ secrets.MELON_COOKIE }}
           INPUT_PRODUCT-ID: ${{ secrets.PRODUCT_ID }}
           INPUT_SCHEDULE-ID: ${{ secrets.SCHEDULE_ID }}
+          INPUT_SEAT-ID: "40" 
+          
           INPUT_PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
           INPUT_SCHEDULE_ID: ${{ secrets.SCHEDULE_ID }}
+          INPUT_SEAT_ID: "40"
