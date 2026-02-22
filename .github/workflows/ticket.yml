@@ -2,7 +2,7 @@ name: Melon Ticket Action
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/10 * * * *'
 
 jobs:
   ticket-job:
@@ -15,15 +15,17 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install
-        run: npm install
+      - name: Install Dependencies
+        run: |
+          npm install
+          npm install -g ts-node typescript
 
-      - name: Build
-        run: npx tsc
-
-      - name: Run
-        run: node dist/index.js
+      - name: Run Script
+        run: ts-node index.ts
         env:
+          COOKIE: ${{ secrets.MELON_COOKIE }}
+          PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
+          SCHEDULE_ID: ${{ secrets.SCHEDULE_ID }}
           INPUT_COOKIE: ${{ secrets.MELON_COOKIE }}
           INPUT_PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
           INPUT_SCHEDULE_ID: ${{ secrets.SCHEDULE_ID }}
