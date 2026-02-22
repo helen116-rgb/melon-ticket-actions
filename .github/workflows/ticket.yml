@@ -23,9 +23,8 @@ jobs:
       - name: Run Script
         run: ts-node index.ts
         env:
-          COOKIE: ${{ secrets.MELON_COOKIE }}
-          PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
-          SCHEDULE_ID: ${{ secrets.SCHEDULE_ID }}
           INPUT_COOKIE: ${{ secrets.MELON_COOKIE }}
+          INPUT_PRODUCT-ID: ${{ secrets.PRODUCT_ID }}
+          INPUT_SCHEDULE-ID: ${{ secrets.SCHEDULE_ID }}
           INPUT_PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
           INPUT_SCHEDULE_ID: ${{ secrets.SCHEDULE_ID }}
