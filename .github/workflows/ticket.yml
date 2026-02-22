@@ -13,17 +13,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '16'
 
       - name: Install dependencies
-        run: npm ci
-
+        run: npm install
       - name: Build project
-        run: npm run build
+        run: ./node_modules/.bin/tsc
 
-      - name: Run Ticket Script
-        run: npm start
+      - name: Run Script
+        run: node dist/index.js
         env:
-          COOKIE: ${{ secrets.MELON_COOKIE }}
-          PRODUCT_ID: ${{ secrets.MELON_PRODUCT_ID }}
-          SCHEDULE_ID: ${{ secrets.MELON_SCHEDULE_ID }}
+          INPUT_COOKIE: ${{ secrets.MELON_COOKIE }}
+          INPUT_PRODUCT_ID: ${{ secrets.MELON_PRODUCT_ID }}
+          INPUT_SCHEDULE_ID: ${{ secrets.MELON_SCHEDULE_ID }}
+          INPUT_SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
