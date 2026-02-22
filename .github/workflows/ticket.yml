@@ -27,7 +27,9 @@ jobs:
           INPUT_PRODUCT-ID: ${{ secrets.PRODUCT_ID }}
           INPUT_SCHEDULE-ID: ${{ secrets.SCHEDULE_ID }}
           INPUT_SEAT-ID: "40" 
-          
+          INPUT_SLACK-INCOMING-WEBHOOK-URL: "https://hooks.slack.com/services/T000/B000/XXXX"
+
           INPUT_PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
           INPUT_SCHEDULE_ID: ${{ secrets.SCHEDULE_ID }}
           INPUT_SEAT_ID: "40"
+          INPUT_SLACK_INCOMING_WEBHOOK_URL: "https://hooks.slack.com/services/T000/B000/XXXX"
