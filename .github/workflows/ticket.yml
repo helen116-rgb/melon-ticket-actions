@@ -2,7 +2,7 @@ name: Melon Ticket Action
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/0.25 * * * *'
+    - cron: '*/1 * * * *'
 
 jobs:
   ticket-job:
