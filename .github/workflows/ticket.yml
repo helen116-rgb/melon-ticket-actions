@@ -5,25 +5,25 @@ on:
     - cron: '*/0.25 * * * *'
 
 jobs:
-  run-ticket:
+  ticket-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      - name: Install dependencies
+      - name: Install
         run: npm install
-      - name: Build project
-        run: ./node_modules/.bin/tsc
 
-      - name: Run Script
+      - name: Build
+        run: npx tsc
+
+      - name: Run
         run: node dist/index.js
         env:
           INPUT_COOKIE: ${{ secrets.MELON_COOKIE }}
-          INPUT_PRODUCT_ID: ${{ secrets.MELON_PRODUCT_ID }}
-          INPUT_SCHEDULE_ID: ${{ secrets.MELON_SCHEDULE_ID }}
-          INPUT_SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          INPUT_PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
+          INPUT_SCHEDULE_ID: ${{ secrets.SCHEDULE_ID }}
